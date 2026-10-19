@@ -3160,3 +3160,40 @@ blockquote {
     height: 30px;
   }
 }
+
+/* home cards without descriptions: keep the featured card a banner, not a square */
+.learn-card.featured {
+  height: clamp(190px, 20vw, 250px);
+  align-content: stretch;
+  grid-template-rows: 100%;
+}
+
+.learn-card.featured .art-wrap,
+.learn-card.featured .photo-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+}
+
+.learn-card.featured .photo-wrap .photo,
+.learn-card.featured .art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.learn-card .faces {
+  margin: 0;
+  height: 30px;
+  min-height: 0;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .learn-card.featured {
+    height: auto;
+    grid-template-rows: 150px auto;
+  }
+}

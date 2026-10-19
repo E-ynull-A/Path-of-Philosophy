@@ -186,7 +186,7 @@ function progressOf(game: GameState | undefined, lang: Lang) {
   }
 }
 
-function PlayCards({ lang, games }: { lang: Lang; games: Games }) {
+function PlayCards({ lang, games, hints = false }: { lang: Lang; games: Games; hints?: boolean }) {
   const items = [
     { mode: 'main' as const, link: href.story, art: 'store', title: home.story, hint: home.storyHint },
     { mode: 'problems' as const, link: href.experiments, art: 'p-trolley', title: home.experiments, hint: home.experimentsHint },
@@ -200,7 +200,7 @@ function PlayCards({ lang, games }: { lang: Lang; games: Games }) {
             <Art name={item.art} />
             <span className="play-card-body">
               <strong>{t(lang, item.title)}</strong>
-              <span className="muted">{t(lang, item.hint)}</span>
+              {hints && <span className="muted">{t(lang, item.hint)}</span>}
               {progress && (
                 <span className="progress-line">
                   <span className="meter">
@@ -231,11 +231,9 @@ function LearnGlyph({ kind }: { kind: 'schools' | 'timeline' | 'glossary' }) {
   if (kind === 'timeline')
     return (
       <svg {...p}>
-        <path d="M3 12h18" />
-        <circle cx="6" cy="12" r="2" />
-        <circle cx="12" cy="12" r="2" />
-        <circle cx="18" cy="12" r="2" />
-        <path d="M6 9V6M12 15v3M18 9V6" />
+        <path d="M6 3h12M6 21h12" />
+        <path d="M7 3c0 5 4 6 5 9-1 3-5 4-5 9M17 3c0 5-4 6-5 9 1 3 5 4 5 9" />
+        <path d="M9.5 18.5c1-1 1.8-1.4 2.5-1.4s1.5.4 2.5 1.4M10 7.5h4" />
       </svg>
     )
   return (
@@ -259,13 +257,11 @@ function LearnCards({ lang }: { lang: Lang }) {
             {godViews.length} {t(lang, home.views)} · {godArgs.length} {t(lang, home.args)}
           </span>
           <strong>{t(lang, lib.tabGod)}</strong>
-          <span className="muted">{t(lang, home.godHint)}</span>
         </span>
       </a>
       <a className="learn-card" href={href.learn}>
         <LearnGlyph kind="schools" />
         <strong>{t(lang, lib.tabSchools)}</strong>
-        <span className="muted">{t(lang, home.schoolsHint)}</span>
         <span className="count">
           {libSchools.length} {t(lang, lib.schoolsCount)}
         </span>
@@ -277,7 +273,6 @@ function LearnCards({ lang }: { lang: Lang }) {
           ))}
         </span>
         <strong>{t(lang, lib.tabPeople)}</strong>
-        <span className="muted">{t(lang, home.peopleHint)}</span>
         <span className="count">
           {philosophers.length} {t(lang, lib.peopleCount)}
         </span>
@@ -285,18 +280,16 @@ function LearnCards({ lang }: { lang: Lang }) {
       <a className="learn-card" href={href.timeline}>
         <LearnGlyph kind="timeline" />
         <strong>{t(lang, lib.tabTimeline)}</strong>
-        <span className="muted">{t(lang, home.timelineHint)}</span>
       </a>
       <a className="learn-card" href={href.glossary}>
         <LearnGlyph kind="glossary" />
         <strong>{t(lang, lib.tabGlossary)}</strong>
-        <span className="muted">{t(lang, home.glossaryHint)}</span>
       </a>
     </div>
   )
 }
 
-function SectionHead({ title, lede, link, num }: { title: string; lede: string; link: string; num: string }) {
+function SectionHead({ title, link, num }: { title: string; link: string; num: string }) {
   return (
     <header className="section-head">
       <span className="section-num" aria-hidden="true">
@@ -306,7 +299,6 @@ function SectionHead({ title, lede, link, num }: { title: string; lede: string; 
         <h2>
           <a href={link}>{title}</a>
         </h2>
-        <p className="lede-sm">{lede}</p>
       </div>
     </header>
   )
@@ -541,11 +533,11 @@ export default function App() {
               <h1 className="home-title">{t(lang, ui.title)}</h1>
             </div>
             <section className="home-section">
-              <SectionHead num="01" title={t(lang, home.playTitle)} lede={t(lang, home.playLede)} link={href.play} />
+              <SectionHead num="01" title={t(lang, home.playTitle)} link={href.play} />
               <PlayCards lang={lang} games={games} />
             </section>
             <section className="home-section">
-              <SectionHead num="02" title={t(lang, home.learnTitle)} lede={t(lang, home.learnLede)} link={href.learn} />
+              <SectionHead num="02" title={t(lang, home.learnTitle)} link={href.learn} />
               <LearnCards lang={lang} />
             </section>
             <p className="keys">{t(lang, ui.tapHint)}</p>
@@ -578,7 +570,7 @@ export default function App() {
           <section className="play-hub">
             <h1>{t(lang, home.playTitle)}</h1>
             <p className="lede-sm">{t(lang, home.playHubLede)}</p>
-            <PlayCards lang={lang} games={games} />
+            <PlayCards lang={lang} games={games} hints />
             <p className="keys">
               {t(lang, ui.tapHint)} {t(lang, ui.keysHint)}
             </p>
