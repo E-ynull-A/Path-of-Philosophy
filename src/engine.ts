@@ -11,6 +11,8 @@ import type {
   Mode,
   School,
   Scene,
+  Snapshot,
+  Text,
 } from './types'
 
 export const SCHOOLS: School[] = [
@@ -43,13 +45,45 @@ export function emptyScores(): Record<School, number> {
 export function createGame(mode: Mode): GameState {
   return {
     mode,
-    sceneId: mode === 'main' ? 'dawn' : 'problems-hub',
+    sceneId: mode === 'main' ? 'morning' : 'problems-hub',
     scores: emptyScores(),
     journal: [],
     lastEcho: null,
     pendingInsight: null,
     solvedProblems: [],
+    history: [],
   }
+}
+
+const HISTORY_LIMIT = 60
+
+function snapshot(state: GameState): Snapshot {
+  const { history: _history, ...rest } = state
+  void _history
+  return rest
+}
+
+/** Step back to the state before the last choice. */
+export function undo(state: GameState): GameState {
+  if (state.history.length === 0) return state
+  const history = state.history.slice(0, -1)
+  const previous = state.history[state.history.length - 1]
+  return { ...previous, history }
+}
+
+function pickedChoices(state: GameState | undefined): Set<string> {
+  return new Set(state?.journal.map((entry) => entry.choiceId) ?? [])
+}
+
+/** Adds the scene's memory lines (if the player earned them) in front of the body. */
+function withMemory(scene: Scene, state: GameState | undefined): Scene {
+  if (!scene.memory?.length) return scene
+  const picked = pickedChoices(state)
+  const lines = scene.memory.filter((line) => line.when.some((id) => picked.has(id)))
+  if (lines.length === 0) return scene
+  const join = (lang: keyof Text) =>
+    [...lines.map((line) => line.text[lang]), scene.body[lang]].join('\n\n')
+  return { ...scene, body: { az: join('az'), en: join('en') } }
 }
 
 function problemsHub(state: GameState | undefined): Scene {
@@ -107,7 +141,8 @@ const catalog: Scene[] = [...scenes, ...problemScenes]
 
 export function getScene(id: string, state?: GameState): Scene | undefined {
   if (id === 'problems-hub') return problemsHub(state)
-  return catalog.find((scene) => scene.id === id)
+  const scene = catalog.find((item) => item.id === id)
+  return scene ? withMemory(scene, state) : undefined
 }
 
 export function applyChoice(state: GameState, choiceId: string): GameState {
@@ -115,6 +150,7 @@ export function applyChoice(state: GameState, choiceId: string): GameState {
   const choice = scene?.choices.find((item) => item.id === choiceId)
   if (!scene || !choice) return state
 
+  const history = [...state.history, snapshot(state)].slice(-HISTORY_LIMIT)
   const scores = { ...state.scores }
   for (const school of SCHOOLS) {
     scores[school] += choice.weights[school] ?? 0
@@ -130,6 +166,7 @@ export function applyChoice(state: GameState, choiceId: string): GameState {
   if (choice.skipInsight) {
     return {
       ...state,
+      history,
       scores,
       solvedProblems,
       sceneId: choice.next,
@@ -147,6 +184,7 @@ export function applyChoice(state: GameState, choiceId: string): GameState {
 
   return {
     ...state,
+    history,
     scores,
     solvedProblems,
     journal: [...state.journal, entry],
@@ -185,19 +223,45 @@ export function contradiction(scores: Record<School, number>): number {
   return heat
 }
 
-export function dominantSchool(scores: Record<School, number>): School {
-  return SCHOOLS.reduce((best, school) =>
-    scores[school] > scores[best] ? school : best,
-  )
+/**
+ * Highest score wins. On a tie, the school the player leaned on most recently
+ * wins — so the ending reflects where the road actually finished.
+ */
+export function dominantSchool(
+  scores: Record<School, number>,
+  journal: JournalEntry[] = [],
+): School {
+  const top = Math.max(...SCHOOLS.map((school) => scores[school]))
+  const tied = SCHOOLS.filter((school) => scores[school] === top)
+  if (tied.length > 1) {
+    for (let i = journal.length - 1; i >= 0; i--) {
+      const school = journal[i].insight.school
+      if (tied.includes(school)) return school
+    }
+  }
+  return tied[0]
+}
+
+/** The runner-up school, if it is a real presence (not zero). */
+export function secondSchool(
+  scores: Record<School, number>,
+  first: School,
+): School | null {
+  const rest = SCHOOLS.filter((school) => school !== first)
+  const best = rest.reduce((a, b) => (scores[b] > scores[a] ? b : a))
+  return scores[best] > 0 ? best : null
 }
 
 export function resolveEnding(state: GameState): Ending {
+  // "Fractured" = no clear leader (top school under 30% of all points)
+  // AND rival schools pull against each other at least as hard as the leader.
   const heat = contradiction(state.scores)
   const max = Math.max(...SCHOOLS.map((school) => state.scores[school]))
-  if (heat >= 4 && max > 0 && heat >= max) {
+  const total = SCHOOLS.reduce((sum, school) => sum + state.scores[school], 0)
+  if (heat >= 4 && max > 0 && heat >= max && max / total < 0.3) {
     return endings.find((ending) => ending.id === 'fractured')!
   }
-  const school = dominantSchool(state.scores)
+  const school = dominantSchool(state.scores, state.journal)
   return endings.find((ending) => ending.school === school) ?? endings[0]
 }
 

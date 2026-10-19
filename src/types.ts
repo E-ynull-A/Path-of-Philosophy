@@ -19,6 +19,8 @@ export type Insight = {
   philosopher: string
   quote: Text
   explain: Text
+  /** Optional question for the reader to keep thinking about. */
+  think?: Text
 }
 
 export type Choice = {
@@ -31,11 +33,22 @@ export type Choice = {
   skipInsight?: boolean
 }
 
+/** A line that appears in a scene only if one of `when` (choice ids) was picked earlier. */
+export type Memory = {
+  when: string[]
+  text: Text
+}
+
 export type Scene = {
   id: string
   chapter: Text
   title: Text
   body: Text
+  /** Chapter number in the main story (1–5), for the progress dots. */
+  step?: number
+  /** Key of an illustration in src/art.tsx */
+  image?: string
+  memory?: Memory[]
   prompt?: Text
   choices: Choice[]
 }
@@ -55,7 +68,11 @@ export type GameState = {
   lastEcho: Text | null
   pendingInsight: { insight: Insight; echo: Text; next: string } | null
   solvedProblems: string[]
+  /** Earlier states, for undo. Never nested. */
+  history: Snapshot[]
 }
+
+export type Snapshot = Omit<GameState, 'history'>
 
 export type Ending = {
   id: string

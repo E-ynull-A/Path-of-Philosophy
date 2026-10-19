@@ -1,3 +1,4 @@
+import { moreProblemMetas, moreProblemScenes } from './problems-more'
 import type { ProblemMeta, Scene } from './types'
 
 export const problemMetas: ProblemMeta[] = [
@@ -49,6 +50,7 @@ export const problemMetas: ProblemMeta[] = [
       en: 'Build a society without knowing who you will be.',
     },
   },
+  ...moreProblemMetas,
 ]
 
 export const problemScenes: Scene[] = [
@@ -165,7 +167,7 @@ export const problemScenes: Scene[] = [
         weights: { stoic: 1, existential: 1 },
         insight: {
           school: 'stoic',
-          philosopher: 'Plutarch / Hobbs',
+          philosopher: 'Plutarch / Hobbes',
           quote: {
             az: 'Ad və iş qalırsa, şey də qalır.',
             en: 'If the name and the work remain, the thing remains.',
@@ -592,4 +594,5 @@ export const problemScenes: Scene[] = [
       },
     ],
   },
+  ...moreProblemScenes,
 ]

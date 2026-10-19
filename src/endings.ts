@@ -6,22 +6,22 @@ export const endings: Ending[] = [
     school: 'stoic',
     title: { az: 'Sakit dairə', en: 'The quiet circle' },
     body: {
-      az: 'Sən dünyanı tam idarə etmək istəmədin. Əlinin çatdığı yeri tutdun: sözünü, əllərini, sakitliyini. Stoiklər bunu belə deyirdi: bəzi şeylər sənin ixtiyarındadır, bəziləri deyil. Azadlıq hadisəni dayandırmaqda yox, ona necə baxmağındadır.\n\nBu, soyuqluq demək deyil. Bu, hər ağrını öz adınla yazmamaqdır. Yoxsa həm sən dağılarsan, həm də heç kimə kömək çatmaz.',
-      en: 'You did not try to steer the whole world. You held what your hands could reach: your word, your work, your composure. The Stoics put it like this: some things are up to you, some are not. Freedom is not stopping every event. It is how you look at it.\n\nThat is not the same as coldness. It is refusing to write every pain in your own name. Otherwise you come apart, and then nobody is helped.',
+      az: 'Sən bütün dünyanı idarə etməyə çalışmadın. Əlinin çatdığını tutdun: sözünü, hərəkətini, sakitliyini. Stoiklər məhz bunu öyrədirdi: bəzi şeylər səndən asılıdır, bəziləri yox. Azadlıq hər hadisəni dayandırmaq deyil — ona necə baxmağı seçməkdir.\n\nBu, soyuqluq demək deyil. Bu, hər ağrını öz adına yazmamaqdır. Yoxsa həm sən tükənərsən, həm də heç kimə kömək edə bilməzsən.',
+      en: 'You didn’t try to control the whole world. You held on to what you could reach: your words, your actions, your calm. That is exactly what the Stoics taught: some things depend on you, some don’t. Freedom isn’t stopping every event — it’s choosing how you look at it.\n\nThat isn’t coldness. It is not writing every pain in your own name. Otherwise you burn out, and then you can’t help anyone.',
     },
     reading: [
       {
-        work: { az: 'Epiktet — Əlkitab', en: 'Epictetus — Enchiridion' },
+        work: { az: 'Epiktet — Təlimat kitabçası (Enxiridion)', en: 'Epictetus — Enchiridion (The Handbook)' },
         why: {
-          az: 'Qısa və aydındır: nə sənin əlindədir, nə deyil.',
-          en: 'Short and plain: what is in your hands, and what is not.',
+          az: 'Cəmi 50 səhifə. Qısa, aydın: nə səndən asılıdır, nə asılı deyil.',
+          en: 'About 50 pages. Short and clear: what is up to you, and what is not.',
         },
       },
       {
-        work: { az: 'Mark Avreli — Özünə düşüncələr', en: 'Marcus Aurelius — Meditations' },
+        work: { az: 'Mark Avreli — Özümlə söhbət (Meditasiyalar)', en: 'Marcus Aurelius — Meditations' },
         why: {
-          az: 'Gündəlik kimidir. Güclü adamın özünü necə sakit saxladığı.',
-          en: 'Like a private journal. How a powerful person kept himself still.',
+          az: 'Bir imperatorun özü üçün yazdığı gündəlik. İstənilən səhifədən başlamaq olar.',
+          en: 'An emperor’s private journal. You can open it on any page.',
         },
       },
     ],
@@ -29,17 +29,24 @@ export const endings: Ending[] = [
   {
     id: 'utilitarian',
     school: 'utilitarian',
-    title: { az: 'Ən çoxun xeyiri', en: 'The greatest number' },
+    title: { az: 'Ən çoxun xeyri', en: 'The greatest number' },
     body: {
-      az: 'Sən çox vaxt belə soruşdun: bu seçimdən sonra dünyada ağrı azalır, ya artır? Bir üzün göz yaşı səni dayandırdısa belə, rəqəmə də baxdın. Bu düşüncənin adı utilitarizmdir. Soyuq görünə bilər. Ürəyi isə hesablama yox, əziyyətin azalmasıdır.\n\nYadda saxla: “çox” deyəndə bir üz itə bilər. Ona görə də bu yolun kölgəsi var. Sən o kölgəyə baxaraq getdin, inkar etmədin.',
-      en: 'You asked, more often than not: after this choice, does pain in the world fall or rise? Even when one face’s tears slowed you, you still looked at the number. That way of thinking is utilitarianism. It can look cold. Its heart is not arithmetic. It is less suffering.\n\nRemember: when you say “the many,” a face can vanish. This road has a shadow. You walked while looking at it, not while denying it.',
+      az: 'Sən çox vaxt belə soruşdun: bu seçimdən sonra ağrı azalır, yoxsa artır? Bir üzün göz yaşı səni dayandıranda belə, nəticəyə baxdın. Bu düşüncənin adı utilitarizmdir. Soyuq görünə bilər, amma ürəyində hesab yox, əziyyəti azaltmaq istəyi var.\n\nYadda saxla: “çoxluq” deyəndə tək bir insan görünməz ola bilər. Bu yolun kölgəsi var. Sən o kölgəni görə-görə getdin.',
+      en: 'You often asked: after this choice, does pain go down or up? Even when one person’s tears slowed you, you looked at the outcome. This way of thinking is called utilitarianism. It can look cold, but at its heart is not maths — it is the wish to reduce suffering.\n\nRemember: when you think of “the many”, one person can disappear. This road has a shadow. You walked it with your eyes open.',
     },
     reading: [
       {
-        work: { az: 'Mill — Utilitarizm', en: 'John Stuart Mill — Utilitarianism' },
+        work: { az: 'Con Stüart Mill — Utilitarizm', en: 'John Stuart Mill — Utilitarianism' },
         why: {
-          az: '“Ən çoxun xoşbəxtliyi”ni insan dilində izah edir, maşın dilində yox.',
-          en: 'Explains the greatest happiness in a human voice, not a machine’s.',
+          az: 'Qısa kitab. “Ən böyük xoşbəxtlik” fikrini insan dilində izah edir.',
+          en: 'A short book that explains “the greatest happiness” in a human voice.',
+        },
+      },
+      {
+        work: { az: 'Piter Singer — Xilas edə biləcəyin həyat', en: 'Peter Singer — The Life You Can Save' },
+        why: {
+          az: 'Müasir və praktik: bu fikir bu gün necə yaşanır?',
+          en: 'Modern and practical: how does this idea work in real life today?',
         },
       },
     ],
@@ -49,18 +56,22 @@ export const endings: Ending[] = [
     school: 'kantian',
     title: { az: 'Hamı üçün qayda', en: 'A rule for everyone' },
     body: {
-      az: 'Sən “bu dəfə istisna” deməyi sevmədin. Düşündün: əgər hamı belə etsə, yol dağılarmı? Kant belə soruşurdu. Yalan, aldatmaq, insanı alət etmək — nəticə yaxşı olsa belə, onu aklamaz.\n\nBu yol sərt ola bilər. Uşaq, dərman, aclıq istisna istəyəndə ürək əsir. Sən qaydanı diri saxladın. Bu da bir növ sədaqətdir: təkcə bir üzü yox, hamının dayandığı yeri qorumaq.',
-      en: 'You did not love the sentence “just this once.” You asked: if everyone did this, would the road collapse? That is Kant’s question. Lying, deceiving, using a person as a tool — a good result does not wash those clean.\n\nThis road can be stern. When a child, medicine, or hunger asks for an exception, the heart shakes. You kept the rule alive. That too is a loyalty: not only to one face, but to the ground everyone stands on.',
+      az: 'Sən “bircə dəfəlik istisna” sözünü sevmədin. Soruşdun: hamı belə etsə, nə olar? Bu, Kantın sualıdır. Yalan, aldatmaq, insanı alət kimi istifadə etmək — nəticə yaxşı olsa belə, bunları təmizə çıxarmır.\n\nBu yol sərt ola bilər. Uşaq, dərman, aclıq istisna istəyəndə ürək titrəyir. Sən qaydanı qorudun. Bu da bir sədaqətdir: təkcə bir insana yox, hamının dayandığı zəminə.',
+      en: 'You didn’t like the phrase “just this once”. You asked: what if everyone did this? That is Kant’s question. Lying, cheating, using a person as a tool — a good result doesn’t wash them clean.\n\nThis road can be strict. When a child, medicine or hunger asks for an exception, the heart trembles. You protected the rule. That is a loyalty too: not to one person, but to the ground everyone stands on.',
     },
     reading: [
       {
-        work: {
-          az: 'Kant — Əxlaqın əsası (qısa hissələr)',
-          en: 'Kant — Groundwork (short sections)',
-        },
+        work: { az: 'Kant — Əxlaq metafizikasının əsasları (qısa hissələr)', en: 'Kant — Groundwork of the Metaphysics of Morals (short sections)' },
         why: {
-          az: 'Kateqorik imperativ: elə et ki, qaydan hamı üçün qanun ola bilsin. Ağır dildir, amma fikir bir cümlədir.',
-          en: 'The categorical imperative: act only on a rule that could be a law for everyone. The prose is hard; the idea is one sentence.',
+          az: 'Dili ağırdır, amma əsas fikir bir cümlədir. Əvvəl qısa xülasəsini oxu.',
+          en: 'The prose is heavy, but the main idea fits in one sentence. Start with a summary.',
+        },
+      },
+      {
+        work: { az: 'Maykl Sendel — Ədalət (kitab və Harvard mühazirələri)', en: 'Michael Sandel — Justice (book and Harvard lectures)' },
+        why: {
+          az: 'Kantı və digərlərini canlı nümunələrlə izah edir. Mühazirələri YouTube-da var.',
+          en: 'Explains Kant and others with lively examples. The lectures are on YouTube.',
         },
       },
     ],
@@ -70,25 +81,22 @@ export const endings: Ending[] = [
     school: 'existential',
     title: { az: 'Özünü yazan yol', en: 'The self-written road' },
     body: {
-      az: 'Sən hazır cavab axtarmadın. Məna kənardan gəlmədi. Sən onu seçməklə düzəltdin. Sartre deyirdi: əvvəl varsan, sonra “nəcəsən” yaranır. Camus deyirdi: dünya məna verməsə belə, daşı yenə qaldır.\n\nBu azadlıq yüngül deyil. Bəhanə az qalır. “Məni belə ediblər” demək çətinləşir. Sən yenə də qələmi əlində saxladın.',
-      en: 'You did not hunt for a ready-made answer. Meaning did not arrive from outside. You made it by choosing. Sartre said: first you exist, then what you are is built. Camus said: even if the world offers no meaning, lift the stone anyway.\n\nThis freedom is not light. The alibis thin out. It gets harder to say “they made me this way.” You still kept the pen in your hand.',
+      az: 'Sən hazır cavab axtarmadın. Məna kənardan gəlmədi — sən onu seçə-seçə yaratdın. Sartre deyirdi: əvvəl varsan, sonra kim olduğunu qurursan. Camus deyirdi: dünya məna verməsə belə, daşı yenə qaldır.\n\nBu azadlıq yüngül deyil. Bəhanə azalır. “Məni belə ediblər” demək çətinləşir. Sən yenə də qələmi öz əlində saxladın.',
+      en: 'You didn’t look for a ready-made answer. Meaning didn’t come from outside — you built it by choosing. Sartre said: first you exist, then you build who you are. Camus said: even if the world gives no meaning, lift the stone again.\n\nThis freedom isn’t light. Excuses get thinner. It gets harder to say “they made me this way.” You still kept the pen in your own hand.',
     },
     reading: [
       {
-        work: {
-          az: 'Sartre — Ekzistensializm humanizmdir',
-          en: 'Sartre — Existentialism Is a Humanism',
-        },
+        work: { az: 'Sartre — Ekzistensializm humanizmdir', en: 'Sartre — Existentialism Is a Humanism' },
         why: {
-          az: 'Qısa çıxışdır. “Əvvəl varlıq, sonra mahiyyət” cümləsi buradadır.',
-          en: 'A short lecture. The line “existence precedes essence” lives here.',
+          az: 'Bir mühazirədir, bir axşama oxunur. “Varlıq mahiyyətdən əvvəl gəlir” fikri buradadır.',
+          en: 'A single lecture — one evening’s read. “Existence precedes essence” lives here.',
         },
       },
       {
         work: { az: 'Camus — Sizif mifi', en: 'Camus — The Myth of Sisyphus' },
         why: {
           az: 'Daşı yenə qaldırmaq. Və buna baxmayaraq Sizifi xoşbəxt təsəvvür etmək.',
-          en: 'To lift the stone again. And still imagine Sisyphus happy.',
+          en: 'Lifting the stone again — and still imagining Sisyphus happy.',
         },
       },
     ],
@@ -98,15 +106,15 @@ export const endings: Ending[] = [
     school: 'virtue',
     title: { az: 'Qızıl orta', en: 'The golden mean' },
     body: {
-      az: 'Sən təkcə “bu an nə edim?” demədin. “Necə insan olum?” da dedin. Aristotel üçün yaxşı həyat xal lövhəsi deyil. Təkrarlanan vərdişdir. Cəsarət qorxaqlıqla ehtiyatsızlığın arasında durur. Cömərdlik də ifratın arasında.\n\nBir jest səni müdrik etməz. Eyni sualı sabah yenə vermək — artıq yoldur.',
-      en: 'You did not only ask “what should I do in this second?” You also asked “what kind of person am I becoming?” For Aristotle a good life is not a scoreboard. It is a repeated habit. Courage stands between cowardice and rashness. Generosity also lives between extremes.\n\nOne gesture will not make you wise. Asking the same question again tomorrow — that already is a path.',
+      az: 'Sən təkcə “indi nə edim?” soruşmadın. “Necə insan olum?” da soruşdun. Aristotel üçün yaxşı həyat bal toplamaq deyil — vərdişdir. Cəsarət qorxaqlıqla düşüncəsizliyin ortasındadır, cömərdlik də xəsisliklə israfın.\n\nBir yaxşı hərəkət insanı müdrik etmir. Amma sabah eyni sualı yenə vermək — artıq yoldur.',
+      en: 'You didn’t just ask “what do I do now?” You also asked “who do I want to be?” For Aristotle, a good life isn’t scoring points — it’s a habit. Courage sits between cowardice and recklessness; generosity between stinginess and waste.\n\nOne good act doesn’t make you wise. But asking the same question again tomorrow — that is already a path.',
     },
     reading: [
       {
-        work: { az: 'Aristotel — Nikomax etikası', en: 'Aristotle — Nicomachean Ethics' },
+        work: { az: 'Aristotel — Nikomax etikası (II kitab)', en: 'Aristotle — Nicomachean Ethics (Book II)' },
         why: {
-          az: 'Fəzilətin məşq olduğunu deyir. Talent yox, təkrar.',
-          en: 'Virtue is practice. Not a gift — repetition.',
+          az: 'Fəzilətin istedad yox, məşq olduğunu izah edir. II kitabdan başla.',
+          en: 'Explains that virtue is practice, not talent. Start with Book II.',
         },
       },
     ],
@@ -116,15 +124,15 @@ export const endings: Ending[] = [
     school: 'buddhist',
     title: { az: 'Yüngül əl', en: 'The light hand' },
     body: {
-      az: 'Sən yapışmamağa meyl etdin: qisasə, qızıla, hətta “mən haqlıyam” cümləsinə. Mərhəmət burada zəiflik deyil. Başqasının ağrısını görməkdir — və onu öz tacı etməmək.\n\nAğrı yox olmayacaq. Yüngül əl ağrıya bir az yer buraxır ki, sən də, o da nəfəs alsın.',
-      en: 'You leaned toward not clinging: not to revenge, not to gold, not even to the sentence “I am right.” Compassion here is not softness. It is seeing another person’s pain — without making it your crown.\n\nPain will not vanish. A light hand leaves pain a little room, so that both of you can breathe.',
+      az: 'Sən yapışmamağa meyl etdin: qisasa, inada, hətta “mən haqlıyam” cümləsinə. Burada mərhəmət zəiflik deyil. Başqasının ağrısını görməkdir — və onu kiminsə günahı kimi yox, insan halı kimi görmək.\n\nAğrı yox olmayacaq. Amma yüngül əl ağrıya bir az yer buraxır ki, həm sən, həm də o nəfəs ala bilsin.',
+      en: 'You leaned toward not clinging: not to revenge, not to stubbornness, not even to “I am right”. Compassion here isn’t weakness. It is seeing another person’s pain — as a human condition, not just someone’s fault.\n\nPain won’t vanish. But a light hand leaves pain a little room, so both you and the other person can breathe.',
     },
     reading: [
       {
         work: { az: 'Dhammapada', en: 'The Dhammapada' },
         why: {
-          az: 'Qısa misralar. Ağıl hər şeyin önündə gedir, deyir.',
-          en: 'Short verses. The mind, it says, precedes all things.',
+          az: 'Qısa misralar toplusu. Hər gün bir-iki misra oxumaq olar.',
+          en: 'A collection of short verses. Read one or two a day.',
         },
       },
     ],
@@ -134,18 +142,22 @@ export const endings: Ending[] = [
     school: 'fractured',
     title: { az: 'Çatlamış güzgü', en: 'The cracked mirror' },
     body: {
-      az: 'Yol səni bir məktəbə yox, toqquşmaya apardı. Bəzən qayda, bəzən rəqəm, bəzən azadlıq, bəzən mərhəmət. Bu, uğursuzluq deyil.\n\nIsaiah Berlin deyirdi: yaxşı dəyərlər də bir-biri ilə vuruşa bilər. Fəlsəfənin çoxu belə başlayır — iki doğru səs eyni anda danışanda. Güzgünü bütöv istəmə. Onu daşı.',
-      en: 'The path did not deliver you to one school. It delivered you to a collision. Sometimes the rule, sometimes the number, sometimes freedom, sometimes mercy. That is not failure.\n\nIsaiah Berlin said good values can still fight each other. A lot of philosophy begins there — when two true voices speak at once. Do not demand a whole mirror. Carry it.',
+      az: 'Yol səni bir məktəbə yox, toqquşmaya gətirdi. Bəzən qayda, bəzən nəticə, bəzən azadlıq, bəzən mərhəmət seçdin. Bu, uğursuzluq deyil.\n\nIsaiah Berlin deyirdi: yaxşı dəyərlər də bir-biri ilə vuruşa bilər. Fəlsəfənin çoxu məhz belə başlayır — iki doğru səs eyni anda danışanda. Güzgünün bütöv olmasını tələb etmə. Onu daşı.',
+      en: 'The road didn’t lead you to one school — it led you to a collision. Sometimes the rule, sometimes the outcome, sometimes freedom, sometimes mercy. That isn’t failure.\n\nIsaiah Berlin said good values can fight each other. A lot of philosophy begins right there — when two true voices speak at once. Don’t demand a whole mirror. Carry it.',
     },
     reading: [
       {
-        work: {
-          az: 'Berlin — Azadlığın iki anlayışı',
-          en: 'Isaiah Berlin — Two Concepts of Liberty',
-        },
+        work: { az: 'Isaiah Berlin — Azadlığın iki anlayışı', en: 'Isaiah Berlin — Two Concepts of Liberty' },
         why: {
-          az: 'Göstərir ki, iki yaxşı şey eyni anda sığmaya bilər. Bu, bəhanə yox, xəritədir.',
-          en: 'Shows that two good things may not fit in one hour. That is a map, not an excuse.',
+          az: 'İki yaxşı şeyin eyni anda sığmaya biləcəyini göstərir. Bu, bəhanə yox, xəritədir.',
+          en: 'Shows that two good things may not fit together. A map, not an excuse.',
+        },
+      },
+      {
+        work: { az: 'Yostein Qorder — Sofinin dünyası', en: 'Jostein Gaarder — Sophie’s World' },
+        why: {
+          az: 'Roman şəklində bütün fəlsəfə tarixi. Hər məktəbə bir az baxmaq üçün ideal başlanğıc.',
+          en: 'The whole history of philosophy as a novel. A perfect start for tasting every school.',
         },
       },
     ],
